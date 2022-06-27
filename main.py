@@ -1,3 +1,4 @@
+from distutils.log import debug
 from prettytable.prettytable import ALL, FRAME
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -8,7 +9,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
+from contextlib import redirect_stdout
 import getpass
+import sys
 import prettytable
 import account # account.py
 
@@ -24,9 +27,16 @@ MID_TIMEOUT = 6
 target_accnt = ''
 accounts = {}
 
+# global option variables (used when running script from command line)
+head = False
+tfa = False
+debugg = False
+file = False
+
 def start():
     options = Options()
-    options.headless = False
+    if head == False: # global headful or headless option 
+        options.headless = True
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--incognito")
     # User agent to bypass Instagram's webscraper detection. Might want to add more in case they up their game
@@ -187,7 +197,8 @@ def get_followers():
         prev_length = curr_length
         follower_username_list = follower_panel.find_elements(By.XPATH, './/li//span[1]/a') # a in first span of the li's will get you the username
         curr_length = len(follower_username_list)
-        print(f"len of list {len(follower_username_list)}") # testing purposes
+        if debugg: # if running this program in debugging mode 
+            print(f"len of list {len(follower_username_list)}") # testing purposes
         
     follower_name_list = follower_panel.find_elements(By.XPATH, './/li//span[1]/../following-sibling::*') # DOM changes after loading more followers
     print(f"follower number: {len(follower_username_list)}")
@@ -242,7 +253,8 @@ def get_following():
         prev_length = curr_length
         following_username_list = following_panel.find_elements(By.XPATH, './/li//span[1]/a') # a in first span of the li's will get you the username
         curr_length = len(following_username_list)
-        print(f"len of list {len(following_username_list)}")
+        if debugg: # if running this program in debugging mode 
+            print(f"len of list {len(following_username_list)}")
         
     following_name_list = following_panel.find_elements(By.XPATH, './/li//span[1]/../following-sibling::*') # DOM changes after loading more followers
     print(f"following number: {len(following_username_list)}")
@@ -289,17 +301,41 @@ def make_table():
         if (curr_account.follows_you==True and curr_account.you_follow==True):
             table.add_row([f"{account.username} ({account.name})", account.follows_you, account.you_follow])
             follow_each_other += 1
-    print()
+    
+    if file == True: 
+        with open('output.txt', 'w') as redirect:
+            with redirect_stdout(redirect):
+                print_table(table, doesnt_follow_you_back, you_dont_follow_back, follow_each_other)
+    else:
+        print()
+        print_table(table, doesnt_follow_you_back, you_dont_follow_back, follow_each_other)
+
+def print_table(table, doesnt_follow_you_back, you_dont_follow_back, follow_each_other):
     print(f"People who don't follow you back: {doesnt_follow_you_back}")
     print(f"People you don't follow back: {you_dont_follow_back}")
     print(f"People that you follow and they follow you back: {follow_each_other}")
     print(table)
 
+def options(args):
+    if "--tfa" in args:
+        global tfa
+        tfa = True
+    if "--debug" in args:
+        global debugg
+        debugg = True
+    if "--head" in args:
+        global head
+        head = True
+    if "--file" in args:
+        global file
+        file = True
 
 def main():
+    options(sys.argv) # Configures options
     start() # Starts Selenium Webdriver
     login() # Login to Instagram.com
-    two_factor_app()    # CHANGE LATER
+    if tfa: 
+        two_factor_app() # Only if 2FA option is passed in when running
     login_success() # Checks if logged in successfully
     visit_profile()
     get_followers()
