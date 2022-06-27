@@ -51,15 +51,11 @@ python3 main.py [options]
 > `[options]` are optional. See below for explanation on when you might want to use them.
 > 
 
-By default this will output to the console. If you want the output in a file instead:
-```console
-python3 main.py [options] > file.txt
-```
-
 #### Options
+- `--file` : use if you want to output to a text file rather than the console. 
 - `--tfa` : use if two factor authentication is enabled for your Instagram account
-- `--debug` : use if you want to print out the current list length as users are scraped (useful for debugging purposes)
 - `--head` : use if you want to open Selenium in headful mode (see the action happening!). Default is headless mode.
+- `--debug` : use if you want to print out the current list length as users are scraped (useful for debugging purposes)
 
 ## Troubleshooting
 For macOS users, the first time you attempt to open the Chromedriver executable you may run into the following error:
