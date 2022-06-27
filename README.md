@@ -16,6 +16,7 @@ Start by cloning this repo:
 ```console
 git clone github.com/liamc1011/Instagram-Webscraper
 ```
+You will need [Python](https://www.python.org/downloads/) (3.6+) installed on your local machine.
 
 Install dependencies: 
 ```console
