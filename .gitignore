@@ -1,0 +1,19 @@
+# vscode
+*.code-workspace
+.vscode/
+
+# virtual environment
+venv/
+
+# DS store
+*.DS_Store
+
+# cache? i think unnecessary
+__pycache__/
+
+# potentially sensitive files
+queryhash.json
+
+# dumb files lol
+main_old.py
+main_older.py
