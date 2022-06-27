@@ -1,7 +1,7 @@
 # Instagram Webscraper
 
 See who doesn't follow you back on Instagram! 
-<br> This program works by having the user log in to their account on the Instagram website, 
+<br><br> This program works by having the user log in to their account on the Instagram website, 
 then scraping their follower and following lists and comparing the differences between the two. 
 A table will be generated showing everybody associated with your Instagram account, whether they follow you, and whether
 you follow them.
@@ -13,6 +13,11 @@ Right now, Instagram Webscraper is not optimized to handle accounts with large f
 This is due to the nature of webscraping and having to scroll on the website in order to see the accounts, as well
 as the fact that Instagram just adds accounts to the DOM and never removes elements (I think) 
 which results in a sluggish page when you have so many DOM elements. 
+<br><br> Due to the nature of webscraping in general, Instagram-Webscraper may not always work reliably. 
+Instagram/websites in general are constantly changing and one small change in the page structure could break my whole program.
+Of course I've tried to make my XPATHs as robust as possible but you really never know how these sites' structures will change.
+If you do find Instagram-Webscraper to be broken and are sure it is due to changes on instagram.com, open an issue here and I will do my best! 
+Or you can fix it yourself and make a pull request as well ;)
 
 -------
 
