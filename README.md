@@ -6,20 +6,20 @@ then scraping their follower and following lists and comparing the differences b
 A table will be generated showing everybody associated with your Instagram account, whether they follow you, and whether
 you follow them.
 
-[Read more](#extra-info) about this project and its limitations. 
+[Read more](#extra-info) below about this project and its limitations. 
 
 -------
 
 ## Getting Started
 
 Start by cloning this repo: 
-```console
+```shell
 git clone github.com/liamc1011/Instagram-Webscraper
 ```
 You will need [Python](https://www.python.org/downloads/) (3.6+) installed on your local machine.
 
 Install dependencies: 
-```console
+```shell
 pip install -r requirements.txt
 ```
 
@@ -30,19 +30,19 @@ Unzip the download and place the executable in the folder in this repo titled `c
 
 > To find which version of Chrome you're using, type `chrome://version` in the Chrome search bar.
 > <br> Linux users can also do: 
-> ```console
+> ```shell
 > google-chrome --version 
 > ``` 
 
 ## Usage
-```console
+```shell
 python3 main.py [options]
 ```
 > `[options]` are optional. See below for explanation on when you might want to use them.
 > 
 
 #### Options
-- `--file` : use if you want to output to a text file rather than the console. 
+- `--file` : use if you want to output to a text file rather than the shell. 
 - `--tfa` : use if two factor authentication is enabled for your Instagram account
 - `--head` : use if you want to open Selenium in headful mode (see the action happening!). Default is headless mode.
 - `--debug` : use if you want to print out the current list length as users are scraped (useful for debugging purposes)
