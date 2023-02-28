@@ -1,7 +1,8 @@
 # Instagram Webscraper
 
+
 ## See who doesn't follow you back on Instagram! 
-<br><br> This program works by having the user log in to their account on the Instagram website, 
+This program works by having the user log in to their account on the Instagram website, 
 then scraping their follower and following lists and comparing the differences between the two. 
 A table will be generated showing everybody associated with your Instagram account, whether they follow you, and whether
 you follow them.
