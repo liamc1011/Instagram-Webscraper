@@ -17,3 +17,6 @@ queryhash.json
 # dumb files lol
 main_old.py
 main_older.py
+
+# program output file
+output.txt
