@@ -1,6 +1,6 @@
 # Instagram Webscraper
 
-See who doesn't follow you back on Instagram! 
+## See who doesn't follow you back on Instagram! 
 <br><br> This program works by having the user log in to their account on the Instagram website, 
 then scraping their follower and following lists and comparing the differences between the two. 
 A table will be generated showing everybody associated with your Instagram account, whether they follow you, and whether
@@ -29,10 +29,6 @@ Locate and download the correct Chromedriver version for the version of Chrome t
 Unzip the download and place the executable in the folder in this repo titled `chromedrivers`
 
 > To find which version of Chrome you're using, type `chrome://version` in the Chrome search bar.
-> <br> Linux users can also do: 
-> ```shell
-> google-chrome --version 
-> ``` 
 
 ## Usage
 ```shell
@@ -42,9 +38,9 @@ python3 main.py [options]
 > 
 
 #### Options
-- `--file` : use if you want to output to a text file rather than the shell. 
+- `--file` : use if you want to output to a text file rather than the shell
 - `--tfa` : use if two factor authentication is enabled for your Instagram account
-- `--head` : use if you want to open Selenium in headful mode (see the action happening!). Default is headless mode.
+- `--head` : use if you want to open Selenium in headful mode (see the action happening!). Default is headless mode
 - `--debug` : use if you want to print out the current list length as users are scraped (useful for debugging purposes)
 
 ## Troubleshooting
